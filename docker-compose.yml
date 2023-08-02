@@ -1,0 +1,15 @@
+version: "3"
+services:
+  frontend:
+    build:
+      context: ./stake-counter-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+
+  backend:
+    build:
+      context: ./stake-counter-backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
