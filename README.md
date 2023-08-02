@@ -150,7 +150,7 @@ Make sure you have `docker` installed in your system.
 
 Run the command to build the image. 
 
-> I could have uploaded the whole image but the size of the application of enormous.
+> I could have uploaded the whole image but the size of the application of enormous. Please wait for 10 min meanwhile go through the build and go through the render implementation.
 
 ![Docker Size](/screenshots/dockerProof.png?raw=true "Docker Size")
 <br/>
