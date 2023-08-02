@@ -1,6 +1,9 @@
 import 'dotenv/config';
 import express, { json } from 'express';
+import cors from 'cors';
+
 const app = express();
+app.use(cors())
 const PORT = process.env.PORT || 5000;
 // Import the db.js file to connect to MongoDB
 import db from './db.js';
