@@ -84,19 +84,19 @@ Response Example - Get the Current Total Stake for Kusama
 ![Computer Image](/screenshots/desktopMain.png?raw=true "Computer Image")
 <br/>
 <b style="text-align: center;">When you open the site on desktop</b>
--
+
 ![Mobile Image](/screenshots/mobileMain.png?raw=true "Mobile Image")
 <br/>
 <b style="text-align: center;">When you open the site on phone</b>
--
+
 ![After Removal](/screenshots/afterRemoval.png?raw=true "Removal")
 <br/>
 <b style="text-align: center;">Removal Demonstration</b>
--
+
 ![Adding Options](/screenshots/addingOptions.png?raw=true "Addition")
 <br/>
 <b style="text-align: center;">Addition Demonstration</b>
--
+
 ![Adding Options](/screenshots/updateDemo.png?raw=true "Update")
 <br/>
 <b style="text-align: center;">Update Demonstration</b>
@@ -110,6 +110,7 @@ Response Example - Get the Current Total Stake for Kusama
 - [x] Ensure the application is responsive, user-friendly, and visually appealing.
 - [x] Use appropriate frameworks and libraries to simplify development (e.g., React, Vue, Angular, etc.).
 - [x] Use version control (e.g., Git) to track changes and share the final codebase.
+- [x] Get a docker working for it
 
 #### How to run the app locally
 
@@ -119,15 +120,15 @@ Clone this repo first using the command:
 ```
 git clone https://github.com/manisgoyal/luganodesTask
 ```
+
+>If you need an implementation without docker. I have written a documentaton for that as well. Tbh, I wrote it when the submission deadline was 6:00 pm. I got the docker working now.
+
+>[Click for Non-Docker Implementation - noDocker Branch](https://github.com/manisgoyal/luganodesTask/tree/noDocker)
+
 ##### Backend
 
-Now start with the backend. 
-- Go to the `stake-counter-backend` directory and start with `npm`.
-```
-    > cd stake-counter-backend
-    > npm install
-```
--- If you want, you can change the environment variables in `.env` file. I have provided the .env file as well for subsequent testing. You can use your own values. The following values are in the file.
+Now start with the backend. You can **leave the backend as it is** or **change the environment variables**.
+- If you want, you can change the environment variables in `.env` file. I have provided the .env file as well for subsequent testing. You can use your own values. The following values are in the file.
 ```
     MONGODB_URI
     SUBSCAN_APIKEY
@@ -135,32 +136,30 @@ Now start with the backend.
     LUGANODES_POLKADOT_STASHADD
     LUGANODES_KUSAMA_STASHADD
 ```
-- Now, run the server using `npm start`. Since the dependencies have `nodemon`, it will start with nodemon.
-
-This will start the backend with something like
-```
-    Server started on port 5000
-    Connected to MongoDB
-```
-We need this port number as we will be making changes in couple of places in frontend directory.
 
 ##### Frontend
 
-Now start with the frontend. 
-- Go to the `stake-counter-frontend` directory and start with `npm`.
+No, changes are needed to be made in the frontend.
+
+##### Running the app
+
+Make sure you have `docker` installed in your system. 
 ```
-    > cd stake-counter-frontend
-    > npm install
+    > docker-compose up --build
 ```
 
-- Now, we have to make changes in some places
-1. In `stake-counter-frontend\src\components\DisplayCard.js` `Line 29`,
-2. In `stake-counter-frontend/src/hooks/fetchTotalStakes.js` `Line 4`,
-3. In `stake-counter-frontend/src/hooks/handleUpdates.js` `Line 4`
+Run the command to build the image. 
 
-change `https://luganodes-backend-y3y3.onrender.com` to `http://localhost:$PORT` . `$PORT` is the port number of backend
-- Now, run the server using `npm start`.
+> I could have uploaded the whole image but the size of the application of enormous.
 
----
+![Docker Size](/screenshots/dockerProof.png?raw=true "Docker Size")
+<br/>
+<b style="text-align: center;">Large Docker Size </b>
 
 This is how you can run the application on your device.
+
+#### Explaining the Working of the Code
+
+Initially all of the blockchains are tracked. Now for the objects that should not be tracked, we can click the cross button on the top right side of the card. Then this untracked blockchain name is added to the `notrack` list and becomes untraceable. Additionally, we have included a drop-down menu with selectable options to retain the non-tracked blockchains. Each blockchain display card features an update icon as well to modify the current stake value of the blockchain.
+
+
